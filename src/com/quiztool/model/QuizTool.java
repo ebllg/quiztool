@@ -57,4 +57,11 @@ public class QuizTool {
         Topic topic = getTopicById(topicId);
         topic.addQuestion(question);
     }
+
+    public void createShortAnswerQuestion(int topicId, String questionText, String name, String answer, int points) {
+        ShortAnswerQuestion question = new ShortAnswerQuestion(name, questionText, points, answer);
+        Topic topic = getTopicById(topicId);
+        topic.addQuestion(question);
+    }
+
 }

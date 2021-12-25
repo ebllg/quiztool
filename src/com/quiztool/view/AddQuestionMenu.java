@@ -2,6 +2,7 @@ package com.quiztool.view;
 
 import com.quiztool.model.QuizTool;
 
+import java.util.HashMap;
 import java.util.Scanner;
 
 public class AddQuestionMenu extends Menu {
@@ -15,20 +16,34 @@ public class AddQuestionMenu extends Menu {
         this.topicQuestionsMenu = topicQuestionsMenu;
     }
 
-    private void addTrueFalseQuestion(Scanner scan) {
+    private HashMap<String, String> scanCommonQuestionDetails(Scanner scan) {
         System.out.println("******************************");
+        HashMap<String, String> questionDetails = new HashMap<>();
 
         System.out.println("Enter question name: ");
         String questionName = scan.nextLine();
+        questionDetails.put("name", questionName);
 
         System.out.println("Enter question text: ");
         String questionText = scan.nextLine();
+        questionDetails.put("text", questionText);
 
         System.out.println("Enter question points: ");
-        int points = Integer.parseInt(scan.nextLine());
+        String points = scan.nextLine();
+        questionDetails.put("points", points);
+
+        return questionDetails;
+    }
+
+    private void addTrueFalseQuestion(Scanner scan) {
+        HashMap<String, String> questionDetails = scanCommonQuestionDetails(scan);
 
         System.out.println("Enter question answer (T/F): ");
         String answer = scan.nextLine();
+
+        String questionText = questionDetails.get("text");
+        String questionName = questionDetails.get("name");
+        int points = Integer.parseInt(questionDetails.get("points"));
 
         if (answer.equals("T")) {
             quizTool.createTrueFalseQuestion(topicId, questionText, questionName, true, points);
@@ -42,12 +57,23 @@ public class AddQuestionMenu extends Menu {
         }
     }
 
-    private void addShortAnswerQuestion() {
-        System.out.println();
+    private void addShortAnswerQuestion(Scanner scan) {
+        HashMap<String, String> questionDetails = scanCommonQuestionDetails(scan);
+
+        System.out.println("Enter question answer: ");
+        String answer = scan.nextLine();
+
+        String questionText = questionDetails.get("text");
+        String questionName = questionDetails.get("name");
+        int points = Integer.parseInt(questionDetails.get("points"));
+
+        quizTool.createShortAnswerQuestion(topicId, questionText, questionName, answer, points);
+        System.out.println("Question saved successfully.");
     }
 
-    private void addMultipleChoiceQuestion() {
-        System.out.println();
+    private void addMultipleChoiceQuestion(Scanner scan) {
+        HashMap<String, String> questionDetails = scanCommonQuestionDetails(scan);
+
     }
 
     @Override
@@ -74,11 +100,11 @@ public class AddQuestionMenu extends Menu {
                 displayMenu();
                 break;
             case "2":
-                addShortAnswerQuestion();
+                addShortAnswerQuestion(scan);
                 displayMenu();
                 break;
             case "3":
-                addMultipleChoiceQuestion();
+                addMultipleChoiceQuestion(scan);
                 displayMenu();
                 break;
         }
