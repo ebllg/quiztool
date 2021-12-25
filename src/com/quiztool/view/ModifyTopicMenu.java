@@ -25,6 +25,5 @@ public class ModifyTopicMenu extends Menu{
         System.out.println("Topic name updated.");
 
         topicQuestionsMenu.displayMenu();
-        scan.close();
     }
 }

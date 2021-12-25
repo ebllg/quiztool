@@ -24,6 +24,5 @@ public class AddTopicMenu extends Menu {
 
         TopicQuestionsMenu topicQuestionsMenu = new TopicQuestionsMenu(quizTool, topicListMenu, topicId);
         topicQuestionsMenu.displayMenu();
-        scan.close();
     }
 }

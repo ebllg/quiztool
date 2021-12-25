@@ -28,7 +28,7 @@ public class TopicListMenu extends Menu {
         System.out.println("\nEnter 'a' for adding a new topic...");
         System.out.println("Enter '0' for main menu...");
 
-        String input = scan.next();
+        String input = scan.nextLine();
 
         if (input.equals("0")) {
             mainMenu.displayMenu();
@@ -39,6 +39,5 @@ public class TopicListMenu extends Menu {
             TopicQuestionsMenu topicQuestionsMenu = new TopicQuestionsMenu(quizTool, this, Integer.parseInt(input) - 1);
             topicQuestionsMenu.displayMenu();
         }
-        scan.close();
     }
 }

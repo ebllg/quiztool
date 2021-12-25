@@ -6,7 +6,6 @@ import java.util.Scanner;
 
 
 public class QuizTool {
-    private static final Scanner scan = new Scanner(System.in);
     private List<Topic> topicList;
 
     public QuizTool() {

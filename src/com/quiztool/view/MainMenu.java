@@ -28,7 +28,7 @@ public class MainMenu extends Menu {
             System.out.println(op);
         }
         System.out.println("\nEnter '0' for exiting...");
-        String operation = scan.next();
+        String operation = scan.nextLine();
 
         if (operation.equals("1")) {
             topicListMenu.displayMenu();
@@ -39,7 +39,5 @@ public class MainMenu extends Menu {
             System.out.println();
             displayMenu();
         }
-
-        scan.close();
     }
 }

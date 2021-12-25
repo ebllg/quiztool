@@ -39,14 +39,14 @@ public class TopicQuestionsMenu extends Menu {
         System.out.println("Enter 'd' for deleting the topic...");
         System.out.println("Enter '0' for topic list menu...");
 
-        String input = scan.next();
+        String input = scan.nextLine();
 
         switch (input) {
             case "0":
                 topicListMenu.displayMenu();
                 break;
             case "a":
-                AddQuestionMenu addQuestionMenu = new AddQuestionMenu(quizTool, this);
+                AddQuestionMenu addQuestionMenu = new AddQuestionMenu(quizTool, this, topicId);
                 addQuestionMenu.displayMenu();
                 break;
             case "m":
@@ -61,6 +61,5 @@ public class TopicQuestionsMenu extends Menu {
                 System.out.println();
                 break;
         }
-        scan.close();
     }
 }
