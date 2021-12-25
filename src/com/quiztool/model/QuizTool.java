@@ -1,12 +1,12 @@
 package com.quiztool.model;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
-import java.util.Scanner;
 
 
 public class QuizTool {
-    private List<Topic> topicList;
+    private final List<Topic> topicList;
 
     public QuizTool() {
         this.topicList = new ArrayList<>() {
@@ -20,16 +20,8 @@ public class QuizTool {
         return topicList;
     }
 
-    public void setTopicList(List<Topic> topicList) {
-        this.topicList = topicList;
-    }
-
-    public void addTopic(Topic topic) {
-        topicList.add(topic);
-    }
-
-    public void deleteTopic(Topic topic) {
-        topicList.remove(topic);
+    public void deleteTopic(int topicId) {
+        topicList.remove(topicId);
     }
 
     public List<Question> getTopicQuestions(int topicIndex) {
@@ -64,4 +56,13 @@ public class QuizTool {
         topic.addQuestion(question);
     }
 
+    public HashMap<String, String> getTopicQuestionDetails(int topicId, int questionId) {
+        Topic topic = getTopicById(topicId);
+        Question question = topic.getQuestionList().get(questionId);
+        HashMap<String, String> questionDetails = new HashMap<>();
+        questionDetails.put("name", question.getName());
+        questionDetails.put("text", question.getName());
+        questionDetails.put("points", Integer.toString(question.getPoints()));
+        return questionDetails;
+    }
 }

@@ -25,7 +25,7 @@ public class DeleteTopicMenu extends Menu {
         System.out.println("Are you sure you want to delete topic '" + topicName + "' ? (y/n)");
         String input = scan.nextLine();
         if (input.equals("y")) {
-            quizTool.getTopicList().remove(topicId);
+            quizTool.deleteTopic(topicId);
             System.out.println("Topic '" + topicName + "' deleted successfully.");
             topicListMenu.displayMenu();
         } else if (input.equals("n")) {
