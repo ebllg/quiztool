@@ -1,11 +1,12 @@
 package com.quiztool.domain;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
 
-public class QuizTool {
+public class QuizTool implements Serializable {
     private List<Topic> topicList;
 
     public QuizTool() {
@@ -16,12 +17,12 @@ public class QuizTool {
         };
     }
 
-    public void setTopicList(List<Topic> topicList) {
-        this.topicList = topicList;
-    }
-
     public List<Topic> getTopicList() {
         return topicList;
+    }
+
+    public void setTopicList(List<Topic> topicList) {
+        this.topicList = topicList;
     }
 
     public void deleteTopic(int topicId) {

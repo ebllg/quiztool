@@ -1,8 +1,9 @@
 package com.quiztool.domain;
 
+import java.io.Serializable;
 import java.util.HashMap;
 
-public abstract class Question {
+public abstract class Question implements Serializable {
     private String name;
     private String questionText;
     private int points;

@@ -1,6 +1,8 @@
 package com.quiztool.domain;
 
-public class QuestionChoice {
+import java.io.Serializable;
+
+public class QuestionChoice implements Serializable {
     private String choiceText;
     private boolean isCorrect;
     private char choiceChar;
@@ -9,10 +11,6 @@ public class QuestionChoice {
         this.choiceText = choiceText;
         this.choiceChar = choiceChar;
         this.isCorrect = isCorrect;
-    }
-
-    public void setCorrect(boolean correct) {
-        isCorrect = correct;
     }
 
     public String getChoiceText() {
@@ -25,6 +23,10 @@ public class QuestionChoice {
 
     public boolean isCorrect() {
         return isCorrect;
+    }
+
+    public void setCorrect(boolean correct) {
+        isCorrect = correct;
     }
 
     public void setTrue(boolean aTrue) {
