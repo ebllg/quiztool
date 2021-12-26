@@ -29,11 +29,6 @@ public class QuizTool implements Serializable {
         topicList.remove(topicId);
     }
 
-    public List<Question> getTopicQuestions(int topicIndex) {
-        Topic topic = topicList.get(topicIndex);
-        return topic.getQuestionList();
-    }
-
     public Topic getTopicById(int topicId) {
         return topicList.get(topicId);
     }
