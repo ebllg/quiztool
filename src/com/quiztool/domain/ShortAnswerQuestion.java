@@ -1,6 +1,8 @@
-package com.quiztool.model;
+package com.quiztool.domain;
 
-public class ShortAnswerQuestion extends Question{
+import java.util.HashMap;
+
+public class ShortAnswerQuestion extends Question {
     private String answer;
 
     public ShortAnswerQuestion(String name, String questionText, int points, String answer) {
@@ -14,5 +16,12 @@ public class ShortAnswerQuestion extends Question{
 
     public void setAnswer(String answer) {
         this.answer = answer;
+    }
+
+    @Override
+    public HashMap<String, String> getDetails() {
+        HashMap<String, String> details = super.getDetails();
+        details.put("answer", answer);
+        return details;
     }
 }

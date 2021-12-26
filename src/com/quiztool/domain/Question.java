@@ -1,4 +1,6 @@
-package com.quiztool.model;
+package com.quiztool.domain;
+
+import java.util.HashMap;
 
 public abstract class Question {
     private String name;
@@ -11,20 +13,20 @@ public abstract class Question {
         this.points = points;
     }
 
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
     public String getQuestionText() {
         return questionText;
     }
 
     public void setQuestionText(String questionText) {
         this.questionText = questionText;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
     }
 
     public int getPoints() {
@@ -35,8 +37,13 @@ public abstract class Question {
         this.points = points;
     }
 
-    public void printDetails() {
-        System.out.println();
+    public HashMap<String, String> getDetails() {
+        HashMap<String, String> details = new HashMap<>();
+        details.put("name", name);
+        details.put("text", questionText);
+        details.put("points", Integer.toString(points));
+        details.put("type", this.getClass().getSimpleName());
+        return details;
     }
 
 }

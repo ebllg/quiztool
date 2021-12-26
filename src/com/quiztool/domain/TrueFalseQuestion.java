@@ -1,4 +1,6 @@
-package com.quiztool.model;
+package com.quiztool.domain;
+
+import java.util.HashMap;
 
 public class TrueFalseQuestion extends Question {
     private boolean answer;
@@ -16,4 +18,10 @@ public class TrueFalseQuestion extends Question {
         this.answer = answer;
     }
 
+    @Override
+    public HashMap<String, String> getDetails() {
+        HashMap<String, String> details = super.getDetails();
+        details.put("answer", String.valueOf(answer));
+        return details;
+    }
 }

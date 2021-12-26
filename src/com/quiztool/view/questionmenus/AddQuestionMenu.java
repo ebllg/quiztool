@@ -1,8 +1,13 @@
-package com.quiztool.view;
+package com.quiztool.view.questionmenus;
 
-import com.quiztool.model.QuizTool;
+import com.quiztool.domain.QuestionChoice;
+import com.quiztool.domain.QuizTool;
+import com.quiztool.view.Menu;
+import com.quiztool.view.topicmenus.TopicQuestionsMenu;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Scanner;
 
 public class AddQuestionMenu extends Menu {
@@ -74,6 +79,35 @@ public class AddQuestionMenu extends Menu {
     private void addMultipleChoiceQuestion(Scanner scan) {
         HashMap<String, String> questionDetails = scanCommonQuestionDetails(scan);
 
+        System.out.println("Enter choice number: ");
+        int choiceNumber = Integer.parseInt(scan.nextLine());
+
+        List<QuestionChoice> choices = new ArrayList<>();
+
+        int charNum = 97;
+        for (int i = 0; i < choiceNumber; i++) {
+            char choiceChar = (char) charNum;
+            System.out.println("Enter choice '" + choiceChar + "':");
+            String choiceText = scan.nextLine();
+            System.out.println("Is this a correct choice? (y/n)");
+            String input = scan.nextLine();
+            boolean isCorrect = true;
+            if (input.equals("y")) {
+                isCorrect = true;
+            } else if (input.equals("n")) {
+                isCorrect = false;
+            }
+            QuestionChoice questionChoice = new QuestionChoice(choiceText, choiceChar, isCorrect);
+            choices.add(questionChoice);
+            charNum++;
+        }
+
+        String questionText = questionDetails.get("text");
+        String questionName = questionDetails.get("name");
+        int points = Integer.parseInt(questionDetails.get("points"));
+
+        quizTool.createMultipleChoiceQuestion(topicId, questionText, questionName, choices, points);
+        System.out.println("Question saved successfully.");
     }
 
     @Override
@@ -81,11 +115,7 @@ public class AddQuestionMenu extends Menu {
         Scanner scan = new Scanner(System.in);
         System.out.println("******************************");
         System.out.println("To add a question, select a question type:");
-        String[] questionTypes = {
-                "(1) True/False",
-                "(2) Short answer",
-                "(3) Multiple choice",
-        };
+        String[] questionTypes = {"(1) True/False", "(2) Short answer", "(3) Multiple choice"};
         for (String questionType : questionTypes) {
             System.out.println(questionType);
         }

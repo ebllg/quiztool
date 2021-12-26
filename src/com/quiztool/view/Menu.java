@@ -1,8 +1,6 @@
 package com.quiztool.view;
 
-import com.quiztool.model.QuizTool;
-
-import java.util.Scanner;
+import com.quiztool.domain.QuizTool;
 
 public abstract class Menu {
     protected final QuizTool quizTool;

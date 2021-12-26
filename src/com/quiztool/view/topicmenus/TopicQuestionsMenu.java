@@ -1,8 +1,11 @@
-package com.quiztool.view;
+package com.quiztool.view.topicmenus;
 
-import com.quiztool.model.Question;
-import com.quiztool.model.QuizTool;
-import com.quiztool.model.Topic;
+import com.quiztool.domain.Question;
+import com.quiztool.domain.QuizTool;
+import com.quiztool.domain.Topic;
+import com.quiztool.view.questionmenus.AddQuestionMenu;
+import com.quiztool.view.Menu;
+import com.quiztool.view.questionmenus.QuestionDetailsMenu;
 
 import java.util.List;
 import java.util.Scanner;
@@ -58,7 +61,8 @@ public class TopicQuestionsMenu extends Menu {
                 deleteTopicMenu.displayMenu();
                 break;
             default:
-                System.out.println();
+                QuestionDetailsMenu questionDetailsMenu = new QuestionDetailsMenu(quizTool, topicId, Integer.parseInt(input) - 1, this);
+                questionDetailsMenu.displayMenu();
                 break;
         }
     }

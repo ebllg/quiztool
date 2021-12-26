@@ -1,4 +1,4 @@
-package com.quiztool.model;
+package com.quiztool.domain;
 
 import java.util.ArrayList;
 import java.util.List;

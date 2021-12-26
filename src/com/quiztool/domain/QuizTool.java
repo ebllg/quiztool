@@ -1,4 +1,4 @@
-package com.quiztool.model;
+package com.quiztool.domain;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -56,13 +56,20 @@ public class QuizTool {
         topic.addQuestion(question);
     }
 
+    public void createMultipleChoiceQuestion(int topicId, String questionText, String name, List<QuestionChoice> choices, int points) {
+        MultipleChoiceQuestion question = new MultipleChoiceQuestion(name, questionText, points, choices);
+        Topic topic = getTopicById(topicId);
+        topic.addQuestion(question);
+    }
+
     public HashMap<String, String> getTopicQuestionDetails(int topicId, int questionId) {
         Topic topic = getTopicById(topicId);
         Question question = topic.getQuestionList().get(questionId);
-        HashMap<String, String> questionDetails = new HashMap<>();
-        questionDetails.put("name", question.getName());
-        questionDetails.put("text", question.getName());
-        questionDetails.put("points", Integer.toString(question.getPoints()));
-        return questionDetails;
+        return question.getDetails();
+    }
+
+    public void deleteQuestion(int topicId, int questionId) {
+        Topic topic = getTopicById(topicId);
+        topic.getQuestionList().remove(questionId);
     }
 }

@@ -1,7 +1,8 @@
-package com.quiztool.view;
+package com.quiztool.view.topicmenus;
 
-import com.quiztool.model.QuizTool;
-import com.quiztool.model.Topic;
+import com.quiztool.domain.QuizTool;
+import com.quiztool.domain.Topic;
+import com.quiztool.view.Menu;
 
 import java.util.Scanner;
 

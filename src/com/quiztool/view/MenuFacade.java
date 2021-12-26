@@ -1,6 +1,6 @@
 package com.quiztool.view;
 
-import com.quiztool.model.QuizTool;
+import com.quiztool.domain.QuizTool;
 
 public class MenuFacade {
 
