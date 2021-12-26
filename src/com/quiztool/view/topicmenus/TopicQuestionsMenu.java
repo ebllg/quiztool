@@ -31,7 +31,7 @@ public class TopicQuestionsMenu extends Menu {
         if (topicQuestions.size() == 0) {
             System.out.println("=> This topic has no questions yet...");
         } else {
-            System.out.println("Select a question:");
+            System.out.println("Enter question number to select a question:");
             for (int i = 0; i < topicQuestions.size(); i++) {
                 System.out.println("(" + (i + 1) + ") " + topicQuestions.get(i).getName());
             }

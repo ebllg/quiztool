@@ -24,7 +24,7 @@ public class MainMenu extends Menu {
                 "(1) Manage question bank",
         };
 
-        System.out.println("Select an operation:");
+        System.out.println("Enter operation number to select an operation:");
         for (String op : operations) {
             System.out.println(op);
         }

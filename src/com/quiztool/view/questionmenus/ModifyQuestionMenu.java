@@ -23,10 +23,18 @@ public class ModifyQuestionMenu extends Menu {
     public void displayMenu() {
         Scanner scan = new Scanner(System.in);
         System.out.println("******************************");
-        System.out.println("Edit question details:");
+        System.out.println("Edit question details. Editable fields are: name, text, points.\n");
 
-        HashMap<String, String> questionDetails = quizTool.getTopicQuestionDetails(topicId, questionId);
-        String input = scan.nextLine();
+        System.out.println("Enter a new question name:");
+        String name = scan.nextLine();
+
+        System.out.println("Enter a new question text:");
+        String text = scan.nextLine();
+
+        System.out.println("Enter a new question point:");
+        String points = scan.nextLine();
+
+        quizTool.updateQuestionDetails(topicId, questionId, name, text, Integer.parseInt(points));
 
         System.out.println("Question updated successfully");
         questionDetailsMenu.displayMenu();

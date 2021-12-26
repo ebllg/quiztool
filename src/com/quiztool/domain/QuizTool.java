@@ -72,4 +72,12 @@ public class QuizTool {
         Topic topic = getTopicById(topicId);
         topic.getQuestionList().remove(questionId);
     }
+
+    public void updateQuestionDetails(int topicId, int questionId, String name, String text, int points) {
+        Topic topic = getTopicById(topicId);
+        Question question = topic.getQuestionList().get(questionId);
+        question.setName(name);
+        question.setQuestionText(text);
+        question.setPoints(points);
+    }
 }

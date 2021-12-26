@@ -22,7 +22,7 @@ public class TopicListMenu extends Menu {
     public void displayMenu() {
         Scanner scan = new Scanner(System.in);
         System.out.println("******************************");
-        System.out.println("Select a topic:");
+        System.out.println("Enter topic number to select a topic:");
         List<Topic> topicList = quizTool.getTopicList();
         for (int i = 0; i < quizTool.getTopicList().size(); i++) {
             System.out.println("(" + (i + 1) + ") " + topicList.get(i).getName());
