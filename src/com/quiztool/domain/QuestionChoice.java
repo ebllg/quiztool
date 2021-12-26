@@ -11,6 +11,10 @@ public class QuestionChoice {
         this.isCorrect = isCorrect;
     }
 
+    public void setCorrect(boolean correct) {
+        isCorrect = correct;
+    }
+
     public String getChoiceText() {
         return choiceText;
     }

@@ -3,8 +3,10 @@ package com.quiztool.view.topicmenus;
 import com.quiztool.domain.Question;
 import com.quiztool.domain.QuizTool;
 import com.quiztool.domain.Topic;
-import com.quiztool.view.questionmenus.AddQuestionMenu;
 import com.quiztool.view.Menu;
+import com.quiztool.view.questionmenus.AddQuestionMenu;
+import com.quiztool.view.questionmenus.ExportQuestionsMenu;
+import com.quiztool.view.questionmenus.ImportQuestionsMenu;
 import com.quiztool.view.questionmenus.QuestionDetailsMenu;
 
 import java.util.List;
@@ -40,6 +42,8 @@ public class TopicQuestionsMenu extends Menu {
         System.out.println("Enter 'a' for adding a question to the topic...");
         System.out.println("Enter 'm' for modifying the topic...");
         System.out.println("Enter 'd' for deleting the topic...");
+        System.out.println("Enter 'e' for exporting questions from the topic...");
+        System.out.println("Enter 'i' for importing questions to the topic...");
         System.out.println("Enter '0' for topic list menu...");
 
         String input = scan.nextLine();
@@ -59,6 +63,14 @@ public class TopicQuestionsMenu extends Menu {
             case "d":
                 DeleteTopicMenu deleteTopicMenu = new DeleteTopicMenu(quizTool, topicListMenu, topicId);
                 deleteTopicMenu.displayMenu();
+                break;
+            case "e":
+                ExportQuestionsMenu exportQuestionsMenu = new ExportQuestionsMenu(quizTool, this, topicId);
+                exportQuestionsMenu.displayMenu();
+                break;
+            case "i":
+                ImportQuestionsMenu importQuestionsMenu = new ImportQuestionsMenu(quizTool, this, topicId);
+                importQuestionsMenu.displayMenu();
                 break;
             default:
                 QuestionDetailsMenu questionDetailsMenu = new QuestionDetailsMenu(quizTool, topicId, Integer.parseInt(input) - 1, this);

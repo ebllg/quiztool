@@ -4,12 +4,16 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Topic {
-    private final List<Question> questionList;
+    private List<Question> questionList;
     private String name;
 
     public Topic(String name) {
         this.name = name;
         this.questionList = new ArrayList<>();
+    }
+
+    public void setQuestionList(List<Question> questionList) {
+        this.questionList = questionList;
     }
 
     public String getName() {
@@ -27,14 +31,5 @@ public class Topic {
     public List<Question> getQuestionList() {
         return questionList;
     }
-
-    public void exportQuestions() {
-
-    }
-
-    public void importQuestions() {
-
-    }
-
 
 }

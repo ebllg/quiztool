@@ -45,5 +45,4 @@ public abstract class Question {
         details.put("type", this.getClass().getSimpleName());
         return details;
     }
-
 }

@@ -6,7 +6,7 @@ import java.util.List;
 
 
 public class QuizTool {
-    private final List<Topic> topicList;
+    private List<Topic> topicList;
 
     public QuizTool() {
         this.topicList = new ArrayList<>() {
@@ -14,6 +14,10 @@ public class QuizTool {
                 add(new Topic("default"));
             }
         };
+    }
+
+    public void setTopicList(List<Topic> topicList) {
+        this.topicList = topicList;
     }
 
     public List<Topic> getTopicList() {
@@ -80,4 +84,15 @@ public class QuizTool {
         question.setQuestionText(text);
         question.setPoints(points);
     }
+
+    public void exportQuestions(int topicId, String filename) {
+        // TODO
+        System.out.println("Export questions functionality is not implemented yet.");
+    }
+
+    public void importQuestions(int topicId, String filename) {
+        // TODO
+        System.out.println("Import questions functionality is not implemented yet.");
+    }
+
 }
