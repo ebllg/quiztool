@@ -24,7 +24,7 @@ public class TopicListMenu extends Menu {
         System.out.println("******************************");
         System.out.println("Enter topic number to select a topic:");
         List<Topic> topicList = quizTool.getTopicList();
-        for (int i = 0; i < quizTool.getTopicList().size(); i++) {
+        for (int i = 0; i < topicList.size(); i++) {
             System.out.println("(" + (i + 1) + ") " + topicList.get(i).getName());
         }
         System.out.println("\nEnter 'a' for adding a new topic...");
@@ -35,8 +35,8 @@ public class TopicListMenu extends Menu {
         if (input.equals("0")) {
             mainMenu.displayMenu();
         } else if (input.equals("a")) {
-            AddTopicMenu topicMenu = new AddTopicMenu(quizTool, this);
-            topicMenu.displayMenu();
+            AddTopicMenu addTopicMenu = new AddTopicMenu(quizTool, this);
+            addTopicMenu.displayMenu();
         } else {
             TopicQuestionsMenu topicQuestionsMenu = new TopicQuestionsMenu(quizTool, this, Integer.parseInt(input) - 1);
             topicQuestionsMenu.displayMenu();

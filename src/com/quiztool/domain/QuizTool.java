@@ -8,6 +8,7 @@ import java.util.List;
 
 public class QuizTool implements Serializable {
     private List<Topic> topicList;
+    private List<Quiz> quizList;
 
     public QuizTool() {
         this.topicList = new ArrayList<>() {
@@ -15,6 +16,7 @@ public class QuizTool implements Serializable {
                 add(new Topic("default"));
             }
         };
+        this.quizList = new ArrayList<>();
     }
 
     public List<Topic> getTopicList() {
@@ -23,6 +25,14 @@ public class QuizTool implements Serializable {
 
     public void setTopicList(List<Topic> topicList) {
         this.topicList = topicList;
+    }
+
+    public List<Quiz> getQuizList() {
+        return quizList;
+    }
+
+    public void setQuizList(List<Quiz> quizList) {
+        this.quizList = quizList;
     }
 
     public void deleteTopic(int topicId) {
@@ -91,4 +101,23 @@ public class QuizTool implements Serializable {
         System.out.println("Import questions functionality is not implemented yet.");
     }
 
+    public int createQuiz(String quizName, int duration) {
+        Quiz newQuiz = new Quiz(quizName, duration);
+        quizList.add(newQuiz);
+        return quizList.size() - 1;
+    }
+
+    public Quiz getQuizById(int quizId) {
+        return quizList.get(quizId);
+    }
+
+    public void updateQuizDetails(int quizId, String quizName, int duration) {
+        Quiz quiz = getQuizById(quizId);
+        quiz.setName(quizName);
+        quiz.setDuration(duration);
+    }
+
+    public void deleteQuiz(int quizId) {
+        quizList.remove(quizId);
+    }
 }

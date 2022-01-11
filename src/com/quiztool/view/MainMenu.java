@@ -1,6 +1,7 @@
 package com.quiztool.view;
 
 import com.quiztool.domain.QuizTool;
+import com.quiztool.view.quizmenus.QuizListMenu;
 import com.quiztool.view.topicmenus.TopicListMenu;
 
 import java.util.Scanner;
@@ -9,10 +10,12 @@ import java.util.Scanner;
 public class MainMenu extends Menu {
 
     private final TopicListMenu topicListMenu;
+    private final QuizListMenu quizListMenu;
 
     public MainMenu(QuizTool quizTool) {
         super(quizTool);
         topicListMenu = new TopicListMenu(quizTool, this);
+        quizListMenu = new QuizListMenu(quizTool, this);
     }
 
     @Override
@@ -22,6 +25,7 @@ public class MainMenu extends Menu {
 
         String[] operations = {
                 "(1) Manage question bank",
+                "(2) Manage quizzes",
         };
 
         System.out.println("Enter operation number to select an operation:");
@@ -33,7 +37,10 @@ public class MainMenu extends Menu {
 
         if (operation.equals("1")) {
             topicListMenu.displayMenu();
-        } else if (operation.equals("0")) {
+        } else if (operation.equals("2")) {
+            quizListMenu.displayMenu();
+        }
+        else if (operation.equals("0")) {
             System.exit(0);
         } else {
             System.out.println("Invalid operation number.");
