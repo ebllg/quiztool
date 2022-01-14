@@ -29,12 +29,11 @@ public class QuizQuestionsMenu extends Menu {
         Scanner scan = new Scanner(System.in);
         System.out.println("******************************");
         Quiz quiz = quizTool.getQuizById(quizId);
-        System.out.println("Quiz '" + quiz.getName() + "'");
+        System.out.println("Quiz '" + quiz.getName() + "' questions:");
         List<Question> quizQuestions = quiz.getQuestionList();
         if (quizQuestions == null || quizQuestions.isEmpty()) {
             System.out.println("=> This quiz has no questions yet...");
         } else {
-            System.out.println("Enter question number to select a question:");
             for (int i = 0; i < quizQuestions.size(); i++) {
                 System.out.println("(" + (i + 1) + ") " + quizQuestions.get(i).getName());
             }
@@ -70,7 +69,7 @@ public class QuizQuestionsMenu extends Menu {
                 break;
             default:
                 System.out.println("Invalid operation.");
-                quizListMenu.displayMenu();
+                displayMenu();
                 break;
         }
     }

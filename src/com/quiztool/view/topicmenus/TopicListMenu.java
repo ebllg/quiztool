@@ -76,7 +76,7 @@ public class TopicListMenu extends Menu {
             quizQuestionsMenu.displayMenu();
         } else {
             assert quizQuestionsMenu != null;
-            TopicQuestionsMenu topicQuestionsMenu = new TopicQuestionsMenu(quizTool, this, Integer.parseInt(input) - 1);
+            TopicQuestionsMenu topicQuestionsMenu = new TopicQuestionsMenu(quizTool, this, Integer.parseInt(input) - 1, quizQuestionsMenu);
             topicQuestionsMenu.displayMenu();
         }
     }

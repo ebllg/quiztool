@@ -33,10 +33,6 @@ public class TopicQuestionsMenu extends Menu {
         this.quizQuestionsMenu = quizQuestionsMenu;
     }
 
-    private void printTopicQuestions() {
-
-    }
-
     private void displayTopicQuestions() {
         Scanner scan = new Scanner(System.in);
         System.out.println("******************************");
@@ -97,27 +93,34 @@ public class TopicQuestionsMenu extends Menu {
         Scanner scan = new Scanner(System.in);
         System.out.println("******************************");
         Topic topic = quizTool.getTopicById(topicId);
-        System.out.println("Topic '" + topic.getName() + "'");
+        System.out.println("Topic '" + topic.getName() + "' questions:");
         List<Question> topicQuestions = topic.getQuestionList();
         if (topicQuestions.size() == 0) {
             System.out.println("=> This topic has no questions yet...");
+            System.out.println("\nEnter '0' to go back to the topic list menu...");
+            int input;
+            input = Integer.parseInt(scan.nextLine());
+            if (input == 0) {
+                topicListMenu.displayMenu();
+            } else {
+                System.out.println("Invalid operation, exiting.");
+                System.exit(0);
+            }
         } else {
-            System.out.println("Enter question number to select a question:");
             for (int i = 0; i < topicQuestions.size(); i++) {
                 System.out.println("(" + (i + 1) + ") " + topicQuestions.get(i).getName());
             }
+            System.out.println("\nEnter question number to add question to the quiz, enter '0' for finishing:");
+
             int input;
-
             input = Integer.parseInt(scan.nextLine());
-
-            if (input == 0) {
-                quizQuestionsMenu.displayMenu();
-            } else {
+            while (input != 0) {
                 quizTool.addQuestionToQuiz(topicId, input - 1, quizQuestionsMenu.getQuizId());
                 System.out.println("Question (" + input + ") added to the quiz.");
+                System.out.println("\nEnter question number to add question to the quiz, enter '0' for finishing:");
+                input = Integer.parseInt(scan.nextLine());
             }
-
-
+            quizQuestionsMenu.displayMenu();
         }
         System.out.println();
     }
