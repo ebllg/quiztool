@@ -4,7 +4,6 @@ import com.quiztool.domain.Question;
 import com.quiztool.domain.Quiz;
 import com.quiztool.domain.QuizTool;
 import com.quiztool.view.Menu;
-import com.quiztool.view.questionmenus.AddQuestionMenu;
 import com.quiztool.view.topicmenus.TopicListMenu;
 
 import java.util.List;
@@ -24,9 +23,7 @@ public class QuizQuestionsMenu extends Menu {
         return quizId;
     }
 
-    @Override
-    public void displayMenu() {
-        Scanner scan = new Scanner(System.in);
+    public void printQuizQuestions () {
         System.out.println("******************************");
         Quiz quiz = quizTool.getQuizById(quizId);
         System.out.println("Quiz '" + quiz.getName() + "' questions:");
@@ -38,6 +35,12 @@ public class QuizQuestionsMenu extends Menu {
                 System.out.println("(" + (i + 1) + ") " + quizQuestions.get(i).getName());
             }
         }
+    }
+
+    @Override
+    public void displayMenu() {
+        Scanner scan = new Scanner(System.in);
+        printQuizQuestions();
         System.out.println();
         System.out.println("Enter 'a' for adding a question to the quiz...");
         System.out.println("Enter 'r' for removing a question from the quiz...");
@@ -56,8 +59,8 @@ public class QuizQuestionsMenu extends Menu {
                 topicListMenu.displayMenu();
                 break;
             case "r":
-//                ModifyTopicMenu modifyTopicMenu = new ModifyTopicMenu(quizTool, this, quizId);
-//                modifyTopicMenu.displayMenu();
+                RemoveQuizQuestionMenu removeQuizQuestionMenu = new RemoveQuizQuestionMenu(quizTool, this);
+                removeQuizQuestionMenu.displayMenu();
                 break;
             case "m":
                 ModifyQuizMenu modifyQuizMenu = new ModifyQuizMenu(quizTool, this, quizId);
