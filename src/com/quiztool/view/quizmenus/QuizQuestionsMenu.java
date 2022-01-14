@@ -4,6 +4,9 @@ import com.quiztool.domain.Question;
 import com.quiztool.domain.Quiz;
 import com.quiztool.domain.QuizTool;
 import com.quiztool.view.Menu;
+import com.quiztool.view.questionmenus.AddQuestionMenu;
+import com.quiztool.view.topicmenus.TopicListMenu;
+
 import java.util.List;
 import java.util.Scanner;
 
@@ -15,6 +18,10 @@ public class QuizQuestionsMenu extends Menu {
         super(quizTool);
         this.quizId = quizId;
         this.quizListMenu = quizListMenu;
+    }
+
+    public int getQuizId() {
+        return quizId;
     }
 
     @Override
@@ -46,8 +53,8 @@ public class QuizQuestionsMenu extends Menu {
                 quizListMenu.displayMenu();
                 break;
             case "a":
-//                AddQuestionMenu addQuestionMenu = new AddQuestionMenu(quizTool, this, topicId);
-//                addQuestionMenu.displayMenu();
+                TopicListMenu topicListMenu = new TopicListMenu(quizTool, this);
+                topicListMenu.displayMenu();
                 break;
             case "r":
 //                ModifyTopicMenu modifyTopicMenu = new ModifyTopicMenu(quizTool, this, quizId);

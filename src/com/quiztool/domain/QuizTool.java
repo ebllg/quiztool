@@ -120,4 +120,11 @@ public class QuizTool implements Serializable {
     public void deleteQuiz(int quizId) {
         quizList.remove(quizId);
     }
+
+    public void addQuestionToQuiz(int topicId, int questionId, int quizId) {
+        Topic topic = getTopicById(topicId);
+        Question question = topic.getQuestionList().get(questionId);
+        Quiz quiz = quizList.get(quizId);
+        quiz.getQuestionList().add(question);
+    }
 }
