@@ -29,4 +29,13 @@ public class ShortAnswerQuestion extends Question {
     public void printQuestion() {
         System.out.println(getQuestionText());
     }
+
+    @Override
+    public int calculateGrade(String answer) {
+        if (answer.equals(this.answer)) {
+            return getPoints();
+        } else {
+            return 0;
+        }
+    }
 }

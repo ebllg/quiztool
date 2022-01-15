@@ -48,4 +48,6 @@ public abstract class Question implements Serializable {
     }
 
     abstract public void printQuestion();
+
+    abstract public int calculateGrade(String answer);
 }

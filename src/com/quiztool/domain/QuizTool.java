@@ -143,6 +143,6 @@ public class QuizTool implements Serializable {
     }
 
     public int gradeAnswer(Question question, String answer) {
-        return 0;
+        return question.calculateGrade(answer);
     }
 }

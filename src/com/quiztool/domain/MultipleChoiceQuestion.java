@@ -45,4 +45,9 @@ public class MultipleChoiceQuestion extends Question {
             System.out.println("(" + choice.getChoiceChar() + ") " + choice.getChoiceText());
         }
     }
+
+    @Override
+    public int calculateGrade(String answer) {
+        return 0;
+    }
 }

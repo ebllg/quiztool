@@ -29,4 +29,13 @@ public class TrueFalseQuestion extends Question {
     public void printQuestion() {
         System.out.println(getQuestionText() + " (T/F)");
     }
+
+    @Override
+    public int calculateGrade(String answer) {
+        if ((this.answer && answer.equals("T")) || (!this.answer && answer.equals("F"))) {
+            return getPoints();
+        } else {
+            return 0;
+        }
+    }
 }
