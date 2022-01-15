@@ -24,4 +24,9 @@ public class TrueFalseQuestion extends Question {
         details.put("answer", String.valueOf(answer));
         return details;
     }
+
+    @Override
+    public void printQuestion() {
+        System.out.println(getQuestionText() + "(T/F)");
+    }
 }

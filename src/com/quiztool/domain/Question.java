@@ -46,4 +46,6 @@ public abstract class Question implements Serializable {
         details.put("type", this.getClass().getSimpleName());
         return details;
     }
+
+    abstract public void printQuestion();
 }

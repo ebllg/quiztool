@@ -2,6 +2,7 @@ package com.quiztool.domain;
 
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 public class Quiz implements Serializable {
@@ -40,4 +41,7 @@ public class Quiz implements Serializable {
         this.duration = duration;
     }
 
+    public void shuffleQuestions() {
+        Collections.shuffle(questionList);
+    }
 }

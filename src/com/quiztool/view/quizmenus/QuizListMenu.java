@@ -62,8 +62,8 @@ public class QuizListMenu extends Menu {
         if (input.equals("0")) {
             mainMenu.displayMenu();
         } else {
-            QuizQuestionsMenu quizQuestionsMenu = new QuizQuestionsMenu(quizTool, this, Integer.parseInt(input) - 1);
-            quizQuestionsMenu.displayMenu();
+            PreviewQuizMenu previewQuizMenu = new PreviewQuizMenu(quizTool, this, Integer.parseInt(input) - 1);
+            previewQuizMenu.displayMenu();
         }
     }
 

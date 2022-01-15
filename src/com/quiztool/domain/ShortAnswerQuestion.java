@@ -24,4 +24,9 @@ public class ShortAnswerQuestion extends Question {
         details.put("answer", answer);
         return details;
     }
+
+    @Override
+    public void printQuestion() {
+        System.out.println(getQuestionText());
+    }
 }

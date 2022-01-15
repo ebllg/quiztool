@@ -37,4 +37,12 @@ public class MultipleChoiceQuestion extends Question {
 
         return details;
     }
+
+    @Override
+    public void printQuestion() {
+        System.out.println(getQuestionText() + " Select all that apply:");
+        for(QuestionChoice choice: getChoices()){
+            System.out.println("(" + choice.getChoiceChar() + ") " + choice.getChoiceText());
+        }
+    }
 }

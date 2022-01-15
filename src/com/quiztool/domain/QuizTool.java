@@ -132,4 +132,17 @@ public class QuizTool implements Serializable {
         Quiz quiz = quizList.get(quizId);
         quiz.getQuestionList().remove(questionId);
     }
+
+    public List<Question> getQuizQuestions(int quizId) {
+        Quiz quiz = quizList.get(quizId);
+        return quiz.getQuestionList();
+    }
+
+    public void askQuestion(Question question) {
+        question.printQuestion();
+    }
+
+    public int gradeAnswer(Question question, String answer) {
+        return 0;
+    }
 }
