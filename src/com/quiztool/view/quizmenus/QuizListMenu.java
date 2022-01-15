@@ -12,15 +12,15 @@ import java.util.Scanner;
 public class QuizListMenu extends Menu {
 
     private final MainMenu mainMenu;
+    private final boolean isPreviewFlow;
 
-    public QuizListMenu(QuizTool quizTool, MainMenu mainMenu) {
+    public QuizListMenu(QuizTool quizTool, MainMenu mainMenu, boolean isPreviewFlow) {
         super(quizTool);
         this.mainMenu = mainMenu;
+        this.isPreviewFlow = isPreviewFlow;
     }
 
-    @Override
-    public void displayMenu() {
-        Scanner scan = new Scanner(System.in);
+    private void printQuizList() {
         System.out.println("******************************");
         List<Quiz> quizList = quizTool.getQuizList();
         if (quizList.size() == 0) {
@@ -31,6 +31,11 @@ public class QuizListMenu extends Menu {
                 System.out.println("(" + (i + 1) + ") " + quizList.get(i).getName());
             }
         }
+    }
+
+    private void displayMenuForManageQuizzes() {
+        Scanner scan = new Scanner(System.in);
+        printQuizList();
         System.out.println("\nEnter 'a' for adding a new quiz...");
         System.out.println("Enter '0' for main menu...");
 
@@ -44,6 +49,30 @@ public class QuizListMenu extends Menu {
         } else {
             QuizQuestionsMenu quizQuestionsMenu = new QuizQuestionsMenu(quizTool, this, Integer.parseInt(input) - 1);
             quizQuestionsMenu.displayMenu();
+        }
+    }
+
+    private void displayMenuForPreviewQuiz() {
+        Scanner scan = new Scanner(System.in);
+        printQuizList();
+        System.out.println("Enter '0' for main menu...");
+
+        String input = scan.nextLine();
+
+        if (input.equals("0")) {
+            mainMenu.displayMenu();
+        } else {
+            QuizQuestionsMenu quizQuestionsMenu = new QuizQuestionsMenu(quizTool, this, Integer.parseInt(input) - 1);
+            quizQuestionsMenu.displayMenu();
+        }
+    }
+
+    @Override
+    public void displayMenu() {
+        if (isPreviewFlow) {
+            displayMenuForPreviewQuiz();
+        } else {
+            displayMenuForManageQuizzes();
         }
     }
 }

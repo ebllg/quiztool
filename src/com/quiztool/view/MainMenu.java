@@ -10,12 +10,10 @@ import java.util.Scanner;
 public class MainMenu extends Menu {
 
     private final TopicListMenu topicListMenu;
-    private final QuizListMenu quizListMenu;
 
     public MainMenu(QuizTool quizTool) {
         super(quizTool);
         topicListMenu = new TopicListMenu(quizTool, this);
-        quizListMenu = new QuizListMenu(quizTool, this);
     }
 
     @Override
@@ -26,6 +24,7 @@ public class MainMenu extends Menu {
         String[] operations = {
                 "(1) Manage question bank",
                 "(2) Manage quizzes",
+                "(3) Preview quiz",
         };
 
         System.out.println("Enter operation number to select an operation:");
@@ -35,17 +34,27 @@ public class MainMenu extends Menu {
         System.out.println("\nEnter '0' for exiting...");
         String operation = scan.nextLine();
 
-        if (operation.equals("1")) {
-            topicListMenu.displayMenu();
-        } else if (operation.equals("2")) {
-            quizListMenu.displayMenu();
-        }
-        else if (operation.equals("0")) {
-            System.exit(0);
-        } else {
-            System.out.println("Invalid operation number.");
-            System.out.println();
-            displayMenu();
+        QuizListMenu quizListMenu;
+
+        switch (operation) {
+            case "1":
+                topicListMenu.displayMenu();
+                break;
+            case "2":
+                quizListMenu = new QuizListMenu(quizTool, this, false);
+                quizListMenu.displayMenu();
+                break;
+            case "3":
+                quizListMenu = new QuizListMenu(quizTool, this, true);
+                quizListMenu.displayMenu();
+                break;
+            case "0":
+                System.exit(0);
+            default:
+                System.out.println("Invalid operation number.");
+                System.out.println();
+                displayMenu();
+                break;
         }
     }
 }
