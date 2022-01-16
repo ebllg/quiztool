@@ -1,5 +1,7 @@
 package com.quiztool.domain;
 
+import java.awt.*;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
@@ -46,8 +48,48 @@ public class MultipleChoiceQuestion extends Question {
         }
     }
 
+    private int getCorrectMarkingPoints() {
+        int numOfCorrectChoices = 0;
+        for(QuestionChoice ch: choices) {
+            if (ch.isCorrect()) {
+                numOfCorrectChoices +=1;
+            }
+        }
+        return getPoints()/numOfCorrectChoices;
+    }
+
+    private int getWrongMarkingPoints() {
+        int numOfWrongChoices = 0;
+        for(QuestionChoice ch: choices) {
+            if (ch.isCorrect()) {
+                numOfWrongChoices +=1;
+            }
+        }
+        return getPoints()/numOfWrongChoices;
+    }
+
+    private List<String> getCorrectChoiceChars() {
+        List<String> correctChoices = new ArrayList<>();
+        for(QuestionChoice ch: choices) {
+            if (ch.isCorrect()) {
+                correctChoices.add(String.valueOf(ch.getChoiceChar()));
+            }
+        }
+        return correctChoices;
+    }
+
     @Override
     public int calculateGrade(String answer) {
-        return 0;
+        int totalGrade = 0;
+        String[] givenChars = answer.split("\\s+");
+        List<String> correctChoices = getCorrectChoiceChars();
+        for (String ch: givenChars) {
+            if (correctChoices.contains(ch)) {
+                totalGrade += getCorrectMarkingPoints();
+            } else {
+                totalGrade -= getWrongMarkingPoints();
+            }
+        }
+        return totalGrade;
     }
 }
